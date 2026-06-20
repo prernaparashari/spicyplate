@@ -14,7 +14,7 @@ export default function Signup() {
     setLoading(true); 
 
     try {
-      const response = await fetch('https://spicy-plate-backend-api.onrender.com/api/auth/signup',  {
+      const response = await fetch('https://spicyplate.onrender.com/api/auth/signup',  {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, phone: mobile, password }) 

@@ -22,7 +22,7 @@ export default function OtpVerify() {
 
     try {
       // Backend schema payload validation object ('phone' and 'otp')
-      const response = await fetch('https://spicy-plate-backend-api.onrender.com/api/auth/verify-otp', {
+      const response = await fetch('https://spicyplate.onrender.com/api/auth/verify-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone: mobile, otp }) 
