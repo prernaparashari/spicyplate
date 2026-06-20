@@ -1,18 +1,13 @@
 import nodemailer from 'nodemailer';
-import dns from 'dns';
 
 const sendOTPEmail = async (userEmail, otp) => {
     try {
+        // 🔥 MAGIC FIX: Manual host/port hatakar built-in Gmail service use karein
         const transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',  
-            port: 587,               
-            secure: false,           
+            service: 'gmail', 
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
-            },
-            lookup: (hostname, opts, callback) => {
-                dns.lookup(hostname, { ...opts, family: 4 }, callback);
             }
         });
 
@@ -24,7 +19,7 @@ const sendOTPEmail = async (userEmail, otp) => {
         };
 
         await transporter.sendMail(mailOptions);
-        console.log("✅ Email sent successfully");
+        console.log("✅ Email sent successfully via Gmail Service!");
     } catch (error) {
         console.error("❌ Nodemailer Error:", error);
         throw new Error("Failed to send OTP email.");
