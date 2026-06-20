@@ -1,10 +1,14 @@
 import nodemailer from 'nodemailer';
+import dns from 'dns'; 
 
 const sendOTPEmail = async (userEmail, otp) => {
     try {
-        // 🔥 MAGIC FIX: Manual host/port hatakar built-in Gmail service use karein
         const transporter = nodemailer.createTransport({
             service: 'gmail', 
+        
+            lookup: (hostname, opts, callback) => {
+                dns.lookup(hostname, { ...opts, family: 4 }, callback);
+            },
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
