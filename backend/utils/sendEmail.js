@@ -1,15 +1,19 @@
 import nodemailer from 'nodemailer';
+import dns from 'dns'; 
 
 const sendOTPEmail = async (userEmail, otp) => {
     try {
         const transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',  // 👈 strict host 
-            port: 465,               // 👈 Secure SMTP port
-            secure: true,            // 👈 Port 465  true
-            family: 4,               // 👈 STICKY IPV4 FORCE
+            host: 'smtp.gmail.com',  // strict host 
+            port: 465,               // Secure SMTP port
+            secure: true,            // Port 465 true
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
+            },
+            
+            lookup: (hostname, opts, callback) => {
+                dns.lookup(hostname, { ...opts, family: 4 }, callback);
             }
         });
 
