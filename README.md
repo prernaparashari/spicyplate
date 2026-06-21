@@ -20,9 +20,7 @@ Spicy Plate is an enterprise-ready, high-performance, full-stack digital commerc
 
 ---
 
-Arey bilkul, ye lijiye `Distributed Tech Stack Specification` se lekar poore end tak ka part, ekdum normal text mein bina kisi bade outer box ke.
 
-Aap ise yahan se lekar neeche tak aaram se select karke copy lijiye aur apni file mein pehle waale part ke thik neeche paste kar dijiye:
 
 ---
 
